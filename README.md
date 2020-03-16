@@ -8,3 +8,5 @@ All the Notes stored inside the app are clearly displayed in a recycler view,pri
 ![Screenshot_20200316-131426](https://user-images.githubusercontent.com/51455561/76734087-2f008d80-6788-11ea-8810-539101d1a3c8.jpg)
 
 ![Screenshot_20200316-131741](https://user-images.githubusercontent.com/51455561/76734285-a0404080-6788-11ea-9017-bec5803b5d87.jpg)
+
+![Screenshot_20200316-131727](https://user-images.githubusercontent.com/51455561/76734334-c534b380-6788-11ea-88d8-e8bf82faa846.jpg)
