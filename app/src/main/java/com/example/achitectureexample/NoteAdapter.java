@@ -1,11 +1,13 @@
 package com.example.achitectureexample;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,7 +31,7 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
 
         @Override
         public boolean areContentsTheSame(@NonNull Note oldItem, @NonNull Note newItem) {
-            return oldItem.getTitle().equals(newItem.getTitle()) && oldItem.getDescription().equals(newItem.getDescription()) && oldItem.getPriority() == newItem.getPriority();
+            return oldItem.getTitle().equals(newItem.getTitle()) && oldItem.getDescription().equals(newItem.getDescription()) && oldItem.getPriority().equals(newItem.getPriority());
         }
     };
 
@@ -47,6 +49,15 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
         holder.textViewTitle.setText(currentNode.getTitle());
         holder.textViewDescription.setText(currentNode.getDescription());
         holder.textViewPriority.setText(String.valueOf(currentNode.getPriority()));
+
+        if(currentNode.getPriority().equals("High")){
+            holder.cardView.setCardBackgroundColor(Color.parseColor("#FF5722"));
+        }else if(currentNode.getPriority().equals("Medium")){
+            holder.cardView.setCardBackgroundColor(Color.parseColor("#FFC107"));
+        }else if(currentNode.getPriority().equals("Low")){
+            holder.cardView.setCardBackgroundColor(Color.parseColor("#4CAF50"));
+        }
+
     }
 
     public Note getNoteAt(int position) {
@@ -57,13 +68,14 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
         private TextView textViewTitle;
         private TextView textViewDescription;
         private TextView textViewPriority;
-
+        private CardView cardView;
 
         public NoteHolder(@NonNull final View itemView) {
             super(itemView);
             textViewTitle = itemView.findViewById(R.id.text_view_title);
             textViewDescription = itemView.findViewById(R.id.text_view_description);
             textViewPriority = itemView.findViewById(R.id.text_view_priority);
+            cardView = itemView.findViewById(R.id.cardView);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

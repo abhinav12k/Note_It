@@ -8,8 +8,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.NumberPicker;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 public class AddEditNoteActivity extends AppCompatActivity {
@@ -18,10 +19,11 @@ public class AddEditNoteActivity extends AppCompatActivity {
     public static final String EXTRA_TITLE = "com.example.achitectureexample.EXTRA_TITLE";
     public static final String EXTRA_DESCRIPTION = "com.example.achitectureexample.EXTRA_DESCRIPTION";
     public static final String EXTRA_PRIORITY = "com.example.achitectureexample.EXTRA_PRIORITY";
+    public static final String EXTRA_PRIORITY_NUMBER = "com.example.achitectureexample.EXTRA_PRIORITY_NUMBER";
 
     private EditText editTextTitle;
     private EditText editTextDescription;
-    private NumberPicker numberPickerPriority;
+    private Spinner spinnerPriority;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +32,7 @@ public class AddEditNoteActivity extends AppCompatActivity {
 
         editTextTitle = findViewById(R.id.edit_text_title);
         editTextDescription = findViewById(R.id.edit_text_Description);
-        numberPickerPriority = findViewById(R.id.number_picker_priority);
-
-        numberPickerPriority.setMinValue(1);
-        numberPickerPriority.setMaxValue(10);
+        spinnerPriority = findViewById(R.id.spinnerPriority);
 
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
 
@@ -42,7 +41,10 @@ public class AddEditNoteActivity extends AppCompatActivity {
             setTitle("Edit Note");
             editTextTitle.setText(intent.getStringExtra(EXTRA_TITLE));
             editTextDescription.setText(intent.getStringExtra(EXTRA_DESCRIPTION));
-            numberPickerPriority.setValue(intent.getIntExtra(EXTRA_PRIORITY,1));
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.priorityList,android.R.layout.simple_spinner_item);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinnerPriority.setAdapter(adapter);
+
         } else {
             setTitle("Add Note");
         }
@@ -52,7 +54,7 @@ public class AddEditNoteActivity extends AppCompatActivity {
 
         String title = editTextTitle.getText().toString();
         String description = editTextDescription.getText().toString();
-        int priority = numberPickerPriority.getValue();
+        String priority = spinnerPriority.getSelectedItem().toString();
 
         if (title.trim().isEmpty() || description.trim().isEmpty()) {
             Toast.makeText(this, "Please insert a title and description", Toast.LENGTH_SHORT).show();
@@ -63,6 +65,7 @@ public class AddEditNoteActivity extends AppCompatActivity {
         data.putExtra(EXTRA_TITLE, title);
         data.putExtra(EXTRA_DESCRIPTION, description);
         data.putExtra(EXTRA_PRIORITY, priority);
+        data.putExtra(EXTRA_PRIORITY_NUMBER,spinnerPriority.getSelectedItem().toString());
 
         int id = getIntent().getIntExtra(EXTRA_ID, -1);
         if (id != -1) {

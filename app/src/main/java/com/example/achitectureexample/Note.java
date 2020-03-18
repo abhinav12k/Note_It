@@ -11,16 +11,22 @@ public class Note {
     private int id;
     private String title;
     private String description;
-    private int priority;
+    private String priority;
+    private int priorityNumber;
 
-    public Note(String title, String description, int priority) {
+    public Note(String title, String description, String priority,int priorityNumber) {
         this.title = title;
         this.description = description;
         this.priority = priority;
+        this.priorityNumber = priorityNumber;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getPriorityNumber() {
+        return priorityNumber;
     }
 
     public int getId() {
@@ -35,7 +41,7 @@ public class Note {
         return description;
     }
 
-    public int getPriority() {
+    public String getPriority() {
         return priority;
     }
 }

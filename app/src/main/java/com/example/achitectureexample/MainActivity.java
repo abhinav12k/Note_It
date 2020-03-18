@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -75,11 +76,23 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, AddEditNoteActivity.class);
                 String title = note.getTitle();
                 String description = note.getDescription();
-                int priority = note.getPriority();
+                String priority = note.getPriority();
+
+                int  priorityNumber=0;
+
+                if(priority.equals("High")){
+                    priorityNumber=3;
+                }else if(priority.equals("Medium")){
+                    priorityNumber=2;
+                }else if(priority.equals("Low")){
+                    priorityNumber=1;
+                }
+
                 int id=note.getId();
                 intent.putExtra(AddEditNoteActivity.EXTRA_TITLE,title);
                 intent.putExtra(AddEditNoteActivity.EXTRA_DESCRIPTION,description);
                 intent.putExtra(AddEditNoteActivity.EXTRA_PRIORITY,priority);
+                intent.putExtra(AddEditNoteActivity.EXTRA_PRIORITY_NUMBER,priorityNumber);
                 intent.putExtra(AddEditNoteActivity.EXTRA_ID,id);
                 startActivityForResult(intent,Edit_Note_Request);
             }
@@ -92,8 +105,18 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == Add_Note_Request && resultCode == RESULT_OK) {
             String title = data.getStringExtra(AddEditNoteActivity.EXTRA_TITLE);
             String description = data.getStringExtra(AddEditNoteActivity.EXTRA_DESCRIPTION);
-            int priority = data.getIntExtra(AddEditNoteActivity.EXTRA_PRIORITY, 1);
-            Note note = new Note(title, description, priority);
+            String priority = data.getStringExtra(AddEditNoteActivity.EXTRA_PRIORITY);
+            int  priorityNumber=0;
+
+            if(priority.equals("High")){
+                priorityNumber=3;
+            }else if(priority.equals("Medium")){
+                priorityNumber=2;
+            }else if(priority.equals("Low")){
+                priorityNumber=1;
+            }
+
+            Note note = new Note(title, description, priority,priorityNumber);
             noteViewModel.insert(note);
             Toast.makeText(this, "Note saved successfully!", Toast.LENGTH_SHORT).show();
         }else if(requestCode == Edit_Note_Request && resultCode == RESULT_OK){
@@ -106,9 +129,10 @@ public class MainActivity extends AppCompatActivity {
 
             String title = data.getStringExtra(AddEditNoteActivity.EXTRA_TITLE);
             String description = data.getStringExtra(AddEditNoteActivity.EXTRA_DESCRIPTION);
-            int priority = data.getIntExtra(AddEditNoteActivity.EXTRA_PRIORITY, 1);
+            String priority = data.getStringExtra(AddEditNoteActivity.EXTRA_PRIORITY);
+            int  priorityNumber=data.getIntExtra(AddEditNoteActivity.EXTRA_PRIORITY_NUMBER,1);
 
-            Note note = new Note(title, description, priority);
+            Note note = new Note(title, description, priority,priorityNumber);
             note.setId(id);
             noteViewModel.update(note);
 
