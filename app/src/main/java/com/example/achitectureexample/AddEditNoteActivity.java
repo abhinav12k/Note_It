@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 public class AddEditNoteActivity extends AppCompatActivity {
 
     public static final String EXTRA_ID = "com.example.achitectureexample.EXTRA_ID";
@@ -21,8 +23,8 @@ public class AddEditNoteActivity extends AppCompatActivity {
     public static final String EXTRA_PRIORITY = "com.example.achitectureexample.EXTRA_PRIORITY";
     public static final String EXTRA_PRIORITY_NUMBER = "com.example.achitectureexample.EXTRA_PRIORITY_NUMBER";
 
-    private EditText editTextTitle;
-    private EditText editTextDescription;
+    private TextInputEditText editTextTitle;
+    private TextInputEditText editTextDescription;
     private Spinner spinnerPriority;
 
     @Override

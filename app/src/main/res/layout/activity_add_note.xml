@@ -9,21 +9,37 @@
     android:padding="8dp"
     android:layout_margin="12dp">
 
-    <EditText
-        android:id="@+id/edit_text_title"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlinedTextFieldTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:hint="Title"
-        android:inputType="text"
-        android:textSize="20sp"></EditText>
+        app:errorEnabled="true">
 
-    <EditText
-        android:id="@+id/edit_text_Description"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_text_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:textSize="20sp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlinedTextFieldDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:hint="Description"
-        android:inputType="textMultiLine"
-        android:textSize="20sp"></EditText>
+        app:errorEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_text_Description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:textSize="20sp"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
@@ -46,7 +62,7 @@
 
         <Spinner
             android:id="@+id/spinnerPriority"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="51dp"
             android:layout_marginStart="80dp"
             android:layout_marginTop="10dp"
@@ -61,9 +77,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!--    <NumberPicker-->
-<!--        android:id="@+id/number_picker_priority"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        ></NumberPicker>-->
 </LinearLayout>
