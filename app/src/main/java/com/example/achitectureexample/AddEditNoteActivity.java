@@ -15,6 +15,9 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.text.DateFormat;
+import java.util.Calendar;
+
 public class AddEditNoteActivity extends AppCompatActivity {
 
     public static final String EXTRA_ID = "com.example.achitectureexample.EXTRA_ID";
@@ -22,15 +25,20 @@ public class AddEditNoteActivity extends AppCompatActivity {
     public static final String EXTRA_DESCRIPTION = "com.example.achitectureexample.EXTRA_DESCRIPTION";
     public static final String EXTRA_PRIORITY = "com.example.achitectureexample.EXTRA_PRIORITY";
     public static final String EXTRA_PRIORITY_NUMBER = "com.example.achitectureexample.EXTRA_PRIORITY_NUMBER";
+    public static final String EXTRA_DATE_TIME = "com.example.achitectureexample.EXTRA_DATE_TIME";
 
     private TextInputEditText editTextTitle;
     private TextInputEditText editTextDescription;
     private Spinner spinnerPriority;
+    private String currentDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_note);
+
+        Calendar calendar = Calendar.getInstance();
+        currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
 
         editTextTitle = findViewById(R.id.edit_text_title);
         editTextDescription = findViewById(R.id.edit_text_Description);
@@ -68,6 +76,7 @@ public class AddEditNoteActivity extends AppCompatActivity {
         data.putExtra(EXTRA_DESCRIPTION, description);
         data.putExtra(EXTRA_PRIORITY, priority);
         data.putExtra(EXTRA_PRIORITY_NUMBER,spinnerPriority.getSelectedItem().toString());
+        data.putExtra(EXTRA_DATE_TIME,currentDate);
 
         int id = getIntent().getIntExtra(EXTRA_ID, -1);
         if (id != -1) {
