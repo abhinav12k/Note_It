@@ -106,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
             String title = data.getStringExtra(AddEditNoteActivity.EXTRA_TITLE);
             String description = data.getStringExtra(AddEditNoteActivity.EXTRA_DESCRIPTION);
             String priority = data.getStringExtra(AddEditNoteActivity.EXTRA_PRIORITY);
+            String dateTime = data.getStringExtra(AddEditNoteActivity.EXTRA_DATE_TIME);
             int  priorityNumber=0;
 
             if(priority.equals("High")){
@@ -116,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
                 priorityNumber=1;
             }
 
-            Note note = new Note(title, description, priority,priorityNumber);
+            Note note = new Note(title, description, priority,priorityNumber,dateTime);
             noteViewModel.insert(note);
             Toast.makeText(this, "Note saved successfully!", Toast.LENGTH_SHORT).show();
         }else if(requestCode == Edit_Note_Request && resultCode == RESULT_OK){
@@ -130,9 +131,10 @@ public class MainActivity extends AppCompatActivity {
             String title = data.getStringExtra(AddEditNoteActivity.EXTRA_TITLE);
             String description = data.getStringExtra(AddEditNoteActivity.EXTRA_DESCRIPTION);
             String priority = data.getStringExtra(AddEditNoteActivity.EXTRA_PRIORITY);
+            String dateTime = data.getStringExtra(AddEditNoteActivity.EXTRA_DATE_TIME);
             int  priorityNumber=data.getIntExtra(AddEditNoteActivity.EXTRA_PRIORITY_NUMBER,1);
 
-            Note note = new Note(title, description, priority,priorityNumber);
+            Note note = new Note(title, description, priority,priorityNumber,dateTime);
             note.setId(id);
             noteViewModel.update(note);
 

@@ -51,6 +51,7 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
         holder.textViewTitle.setText(currentNode.getTitle());
         holder.textViewDescription.setText(currentNode.getDescription());
         holder.textViewPriority.setText(String.valueOf(currentNode.getPriority()));
+        holder.textViewDateTime.setText(currentNode.getDateTime());
 
         if(currentNode.getPriority().equals("High")){
             holder.cardView.setCardBackgroundColor(Color.parseColor("#FF5722"));
@@ -70,6 +71,7 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
         private TextView textViewTitle;
         private TextView textViewDescription;
         private TextView textViewPriority;
+        private TextView textViewDateTime;
         private MaterialCardView cardView;
 
         public NoteHolder(@NonNull final View itemView) {
@@ -78,6 +80,7 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
             textViewDescription = itemView.findViewById(R.id.text_view_description);
             textViewPriority = itemView.findViewById(R.id.text_view_priority);
             cardView = itemView.findViewById(R.id.cardView);
+            textViewDateTime = itemView.findViewById(R.id.text_view_date_time);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
