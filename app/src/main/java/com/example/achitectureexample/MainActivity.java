@@ -132,8 +132,14 @@ public class MainActivity extends AppCompatActivity {
             String description = data.getStringExtra(AddEditNoteActivity.EXTRA_DESCRIPTION);
             String priority = data.getStringExtra(AddEditNoteActivity.EXTRA_PRIORITY);
             String dateTime = data.getStringExtra(AddEditNoteActivity.EXTRA_DATE_TIME);
-            int  priorityNumber=data.getIntExtra(AddEditNoteActivity.EXTRA_PRIORITY_NUMBER,1);
-
+            int  priorityNumber=0;
+            if(priority.equals("High")){
+                priorityNumber=3;
+            }else if(priority.equals("Medium")){
+                priorityNumber=2;
+            }else if(priority.equals("Low")){
+                priorityNumber=1;
+            }
             Note note = new Note(title, description, priority,priorityNumber,dateTime);
             note.setId(id);
             noteViewModel.update(note);

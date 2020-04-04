@@ -54,7 +54,7 @@ public class AddEditNoteActivity extends AppCompatActivity {
             ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.priorityList,android.R.layout.simple_spinner_item);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinnerPriority.setAdapter(adapter);
-
+//            spinnerPriority.setSelection(intent.getIntExtra(EXTRA_PRIORITY_NUMBER,1));
         } else {
             setTitle("Add Note");
         }
@@ -77,6 +77,18 @@ public class AddEditNoteActivity extends AppCompatActivity {
         data.putExtra(EXTRA_PRIORITY, priority);
         data.putExtra(EXTRA_PRIORITY_NUMBER,spinnerPriority.getSelectedItem().toString());
         data.putExtra(EXTRA_DATE_TIME,currentDate);
+
+        int  priorityNumber=0;
+
+        if(priority.equals("High")){
+            priorityNumber=3;
+        }else if(priority.equals("Medium")){
+            priorityNumber=2;
+        }else if(priority.equals("Low")){
+            priorityNumber=1;
+        }
+
+        data.putExtra(EXTRA_PRIORITY_NUMBER,priorityNumber);
 
         int id = getIntent().getIntExtra(EXTRA_ID, -1);
         if (id != -1) {

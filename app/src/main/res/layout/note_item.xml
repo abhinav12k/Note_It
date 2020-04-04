@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     style="@style/Widget.MaterialComponents.CardView"
     android:id="@+id/cardView"
+    app:cardCornerRadius="6dp"
     android:layout_marginEnd="8dp"
     android:layout_marginStart="8dp"
     android:layout_marginTop="8dp"
@@ -28,12 +29,12 @@
             android:id="@+id/text_view_date_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="-28dp"
-            android:layout_alignParentEnd="true"
             android:layout_below="@id/text_view_priority"
-            android:text="18/2/20"
-            android:textSize="14dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="-28dp"
+            android:text="Friday, 4 April, 2020"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="14dp" />
 
         <TextView
             android:id="@+id/text_view_title"
@@ -48,12 +49,12 @@
 
         <TextView
             android:id="@+id/text_view_description"
-            android:layout_width="wrap_content"
+            android:layout_width="259dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/text_view_title"
             android:text="Description"
-            android:textSize="18sp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="18sp" />
 
     </RelativeLayout>
 
