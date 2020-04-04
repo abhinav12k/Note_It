@@ -1,4 +1,4 @@
-package com.example.achitectureexample;
+package com.abhi.noteIt;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;

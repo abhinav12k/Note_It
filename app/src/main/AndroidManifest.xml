@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.achitectureexample">
+    package="com.android.noteIt">
 
     <application
         android:allowBackup="true"
@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".splashscreen"
+        <activity android:name="com.abhi.noteIt.splashscreen"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,9 +17,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".AddEditNoteActivity"
-            android:parentActivityName=".MainActivity"/>
+        <activity android:name="com.abhi.noteIt.MainActivity" />
+        <activity android:name="com.abhi.noteIt.AddEditNoteActivity"
+            android:parentActivityName="com.abhi.noteIt.MainActivity"/>
     </application>
 
 </manifest>

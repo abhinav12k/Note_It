@@ -1,6 +1,5 @@
-package com.example.achitectureexample;
+package com.abhi.noteIt;
 
-import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 

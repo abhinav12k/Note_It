@@ -1,11 +1,9 @@
-package com.example.achitectureexample;
+package com.abhi.noteIt;
 
 import android.app.Application;
 import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
-import androidx.room.Delete;
-import androidx.room.Update;
 
 import java.util.List;
 

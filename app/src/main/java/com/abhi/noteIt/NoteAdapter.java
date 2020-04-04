@@ -1,4 +1,4 @@
-package com.example.achitectureexample;
+package com.abhi.noteIt;
 
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -7,15 +7,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.noteIt.R;
 import com.google.android.material.card.MaterialCardView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
 

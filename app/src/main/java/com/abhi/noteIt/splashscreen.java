@@ -1,15 +1,14 @@
-package com.example.achitectureexample;
+package com.abhi.noteIt;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.PersistableBundle;
 import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.android.noteIt.R;
 
 public class splashscreen extends AppCompatActivity {
 
