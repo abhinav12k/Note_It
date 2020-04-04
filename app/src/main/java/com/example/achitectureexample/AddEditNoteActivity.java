@@ -38,7 +38,7 @@ public class AddEditNoteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_note);
 
         Calendar calendar = Calendar.getInstance();
-        currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
+        currentDate = DateFormat.getDateInstance(DateFormat.MEDIUM).format(calendar.getTime());
 
         editTextTitle = findViewById(R.id.edit_text_title);
         editTextDescription = findViewById(R.id.edit_text_Description);

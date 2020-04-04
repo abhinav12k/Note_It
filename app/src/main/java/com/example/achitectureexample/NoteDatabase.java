@@ -48,7 +48,7 @@ public abstract class NoteDatabase extends RoomDatabase {
         protected Void doInBackground(Void... voids) {
 
             Calendar calendar = Calendar.getInstance();
-            String currentDate  = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
+            String currentDate  = DateFormat.getDateInstance(DateFormat.MEDIUM).format(calendar.getTime());
 
 //            SimpleDateFormat sdf = new SimpleDateFormat("hh:mm a");
 //            String result = currentDate+", "+sdf.format(Calendar.getInstance().getTime());
