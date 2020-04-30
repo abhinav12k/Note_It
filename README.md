@@ -25,7 +25,7 @@ Note It! make it easier to store notes with its simplistic UI and the user is ab
 * Paste url to repository i.e https://github.com/abhinav78910/Note_It.git
 * Click on clone.
 
-#PlayStore Link
+# PlayStore Link
 https://play.google.com/store/apps/details?id=com.abhi.noteIt
 
 ![Screenshot_20200316-131426](https://user-images.githubusercontent.com/51455561/76734087-2f008d80-6788-11ea-8810-539101d1a3c8.jpg)
