@@ -29,7 +29,7 @@ Note It! make it easier to store notes with its simplistic UI and the user is ab
 https://play.google.com/store/apps/details?id=com.abhi.noteIt
 
 ![SplashS](https://user-images.githubusercontent.com/51455561/80761992-425d9180-8b59-11ea-912b-41816e3149bf.jpg)                
-  ![intro1](https://user-images.githubusercontent.com/51455561/80761988-41c4fb00-8b59-11ea-8b6c-c95eb44e48e6.jpg)
-    ![add1](https://user-images.githubusercontent.com/51455561/80761978-3f62a100-8b59-11ea-94dd-42f7ef8c6f4d.jpg)
-       ![edit1](https://user-images.githubusercontent.com/51455561/80761983-4093ce00-8b59-11ea-864d-3105ddf804d5.jpg)
+![intro1](https://user-images.githubusercontent.com/51455561/80761988-41c4fb00-8b59-11ea-8b6c-c95eb44e48e6.jpg)
+![add1](https://user-images.githubusercontent.com/51455561/80761978-3f62a100-8b59-11ea-94dd-42f7ef8c6f4d.jpg)
+![edit1](https://user-images.githubusercontent.com/51455561/80761983-4093ce00-8b59-11ea-864d-3105ddf804d5.jpg)
 
