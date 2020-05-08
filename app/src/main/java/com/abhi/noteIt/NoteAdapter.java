@@ -4,6 +4,8 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,7 +16,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.noteIt.R;
 import com.google.android.material.card.MaterialCardView;
 
-public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
+import java.util.ArrayList;
+import java.util.List;
+
+public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder>  {
 
     private onItemClickListener listener;
 

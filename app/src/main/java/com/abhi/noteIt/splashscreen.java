@@ -12,7 +12,7 @@ import com.android.noteIt.R;
 
 public class splashscreen extends AppCompatActivity {
 
-    public static int SPLASH_TIME_OUT = 2000;
+    public static int SPLASH_TIME_OUT = 1300;
 
 
 

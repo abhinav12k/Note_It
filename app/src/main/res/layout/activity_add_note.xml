@@ -4,16 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="12dp"
+    android:background="#FFFFFF"
     android:orientation="vertical"
-    tools:context="com.abhi.noteIt.AddEditNoteActivity"
     android:padding="8dp"
-    android:layout_margin="12dp">
+    tools:context="com.abhi.noteIt.AddEditNoteActivity">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/outlinedTextFieldTitle"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:hint="Title"
         app:errorEnabled="true">
 
@@ -22,25 +23,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/outlinedTextFieldDescription"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:hint="Description"
-        app:hintAnimationEnabled="true"
-        app:errorEnabled="true">
+        app:errorEnabled="true"
+        app:hintAnimationEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_Description"
             android:layout_width="match_parent"
             android:layout_height="200dp"
+            android:gravity="start"
             android:inputType="textMultiLine"
-            android:textSize="20sp"
-            android:gravity="start"/>
+            android:textSize="20sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -2,16 +2,18 @@ package com.abhi.noteIt;
 
 import android.app.Application;
 import android.os.AsyncTask;
+import android.widget.Filter;
+import android.widget.Filterable;
 
 import androidx.lifecycle.LiveData;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class NoteRepository {
+public class NoteRepository  {
 
     private NoteDoa noteDoa;
     private LiveData<List<Note>> allNotes;
-
     public NoteRepository(Application application) {
 
         NoteDatabase database = NoteDatabase.getInstance(application);
@@ -34,6 +36,10 @@ public class NoteRepository {
 
     public void deleteAllNotes() {
         new DeleteAllNodeAsyncTask(noteDoa).execute();
+    }
+
+    public LiveData<List<Note>> getSearchedNotes(String NoteText){
+        return noteDoa.getSearchedNotes(NoteText);
     }
 
     public LiveData<List<Note>> getAllNotes() {

@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -27,7 +28,8 @@ public class MainActivity extends AppCompatActivity {
     public static final int Add_Note_Request = 1;
     public static final int Edit_Note_Request = 2;
     private NoteViewModel noteViewModel;
-
+    RecyclerView recyclerView;
+    NoteAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,11 +44,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
 
-        final NoteAdapter adapter = new NoteAdapter();
+        adapter = new NoteAdapter();
         recyclerView.setAdapter(adapter);
 
         noteViewModel = ViewModelProviders.of(this).get(NoteViewModel.class);
@@ -155,6 +157,41 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.main_menu, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                getNotesFromDb(query);
+                return false;
+            }
+
+            private void getNotesFromDb(String searchText) {
+                searchText = "%"+searchText+"%";
+
+                noteViewModel.getSearchedNotes(searchText).observe(MainActivity.this, new Observer<List<Note>>() {
+                    @Override
+                    public void onChanged(List<Note> notes) {
+                        if(notes==null){
+                            return;
+                        }
+//                        NoteAdapter adapter = new NoteAdapter();
+                        adapter.submitList(notes);
+                        recyclerView.setAdapter(adapter);
+
+                    }
+                });
+
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                getNotesFromDb(newText);
+                return false;
+            }
+        });
         return true;
     }
 
