@@ -24,7 +24,7 @@ public interface NoteDoa {
     @Query("DELETE FROM NOTE_TABLE")
     void deleteAllNotes();
 
-    @Query("SELECT * FROM NOTE_TABLE WHERE title like :NoteText")
+    @Query("SELECT * FROM NOTE_TABLE WHERE title like :NoteText ORDER BY PRIORITYNUMBER DESC")
     LiveData<List<Note>> getSearchedNotes(String NoteText);
 
     @Query("SELECT * FROM note_table ORDER BY PRIORITYNUMBER DESC")

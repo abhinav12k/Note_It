@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.noteIt.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,8 +30,10 @@ public class MainActivity extends AppCompatActivity {
     public static final int Add_Note_Request = 1;
     public static final int Edit_Note_Request = 2;
     private NoteViewModel noteViewModel;
+    private List<Note> completeList;
     RecyclerView recyclerView;
     NoteAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChanged(@Nullable List<Note> notes) {
                 adapter.submitList(notes);
+                completeList = new ArrayList<>(notes);
             }
         });
 
@@ -80,23 +85,23 @@ public class MainActivity extends AppCompatActivity {
                 String description = note.getDescription();
                 String priority = note.getPriority();
 
-                int  priorityNumber=0;
+                int priorityNumber = 0;
 
-                if(priority.equals("High")){
-                    priorityNumber=3;
-                }else if(priority.equals("Medium")){
-                    priorityNumber=2;
-                }else if(priority.equals("Low")){
-                    priorityNumber=1;
+                if (priority.equals("High")) {
+                    priorityNumber = 3;
+                } else if (priority.equals("Medium")) {
+                    priorityNumber = 2;
+                } else if (priority.equals("Low")) {
+                    priorityNumber = 1;
                 }
 
-                int id=note.getId();
-                intent.putExtra(AddEditNoteActivity.EXTRA_TITLE,title);
-                intent.putExtra(AddEditNoteActivity.EXTRA_DESCRIPTION,description);
-                intent.putExtra(AddEditNoteActivity.EXTRA_PRIORITY,priority);
-                intent.putExtra(AddEditNoteActivity.EXTRA_PRIORITY_NUMBER,priorityNumber);
-                intent.putExtra(AddEditNoteActivity.EXTRA_ID,id);
-                startActivityForResult(intent,Edit_Note_Request);
+                int id = note.getId();
+                intent.putExtra(AddEditNoteActivity.EXTRA_TITLE, title);
+                intent.putExtra(AddEditNoteActivity.EXTRA_DESCRIPTION, description);
+                intent.putExtra(AddEditNoteActivity.EXTRA_PRIORITY, priority);
+                intent.putExtra(AddEditNoteActivity.EXTRA_PRIORITY_NUMBER, priorityNumber);
+                intent.putExtra(AddEditNoteActivity.EXTRA_ID, id);
+                startActivityForResult(intent, Edit_Note_Request);
             }
         });
     }
@@ -109,20 +114,20 @@ public class MainActivity extends AppCompatActivity {
             String description = data.getStringExtra(AddEditNoteActivity.EXTRA_DESCRIPTION);
             String priority = data.getStringExtra(AddEditNoteActivity.EXTRA_PRIORITY);
             String dateTime = data.getStringExtra(AddEditNoteActivity.EXTRA_DATE_TIME);
-            int  priorityNumber=0;
+            int priorityNumber = 0;
 
-            if(priority.equals("High")){
-                priorityNumber=3;
-            }else if(priority.equals("Medium")){
-                priorityNumber=2;
-            }else if(priority.equals("Low")){
-                priorityNumber=1;
+            if (priority.equals("High")) {
+                priorityNumber = 3;
+            } else if (priority.equals("Medium")) {
+                priorityNumber = 2;
+            } else if (priority.equals("Low")) {
+                priorityNumber = 1;
             }
 
-            Note note = new Note(title, description, priority,priorityNumber,dateTime);
+            Note note = new Note(title, description, priority, priorityNumber, dateTime);
             noteViewModel.insert(note);
             Toast.makeText(this, "Note saved successfully!", Toast.LENGTH_SHORT).show();
-        }else if(requestCode == Edit_Note_Request && resultCode == RESULT_OK){
+        } else if (requestCode == Edit_Note_Request && resultCode == RESULT_OK) {
             int id = data.getIntExtra(AddEditNoteActivity.EXTRA_ID, -1);
 
             if (id == -1) {
@@ -134,21 +139,20 @@ public class MainActivity extends AppCompatActivity {
             String description = data.getStringExtra(AddEditNoteActivity.EXTRA_DESCRIPTION);
             String priority = data.getStringExtra(AddEditNoteActivity.EXTRA_PRIORITY);
             String dateTime = data.getStringExtra(AddEditNoteActivity.EXTRA_DATE_TIME);
-            int  priorityNumber=0;
-            if(priority.equals("High")){
-                priorityNumber=3;
-            }else if(priority.equals("Medium")){
-                priorityNumber=2;
-            }else if(priority.equals("Low")){
-                priorityNumber=1;
+            int priorityNumber = 0;
+            if (priority.equals("High")) {
+                priorityNumber = 3;
+            } else if (priority.equals("Medium")) {
+                priorityNumber = 2;
+            } else if (priority.equals("Low")) {
+                priorityNumber = 1;
             }
-            Note note = new Note(title, description, priority,priorityNumber,dateTime);
+            Note note = new Note(title, description, priority, priorityNumber, dateTime);
             note.setId(id);
             noteViewModel.update(note);
 
             Toast.makeText(this, "Note updated Successfully", Toast.LENGTH_SHORT).show();
-        }
-        else {
+        } else {
             Toast.makeText(this, "Note not saved!", Toast.LENGTH_SHORT).show();
         }
     }
@@ -161,6 +165,8 @@ public class MainActivity extends AppCompatActivity {
         MenuItem searchItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) searchItem.getActionView();
 
+        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -169,17 +175,18 @@ public class MainActivity extends AppCompatActivity {
             }
 
             private void getNotesFromDb(String searchText) {
-                searchText = "%"+searchText+"%";
+                searchText = "%" + searchText + "%";
 
                 noteViewModel.getSearchedNotes(searchText).observe(MainActivity.this, new Observer<List<Note>>() {
                     @Override
                     public void onChanged(List<Note> notes) {
-                        if(notes==null){
+                        if (notes == null) {
                             return;
                         }
 //                        NoteAdapter adapter = new NoteAdapter();
                         adapter.submitList(notes);
-                        recyclerView.setAdapter(adapter);
+//                        completeList = notes;
+//                        recyclerView.setAdapter(adapter);
 
                     }
                 });

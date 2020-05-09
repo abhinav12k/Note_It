@@ -6,10 +6,11 @@
         android:icon="@drawable/ic_search_black_24dp"
         android:title="Search"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
-        app:showAsAction="ifRoom|collapseActionView" />
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/delete_all_notes"
-        android:title="Delete All Notes" />
+        android:title="Delete All Notes"
+        app:showAsAction="never"/>
 
 </menu>
