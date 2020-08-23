@@ -8,7 +8,6 @@ Note It! make it easier to store notes with its simplistic UI and the user is ab
 * Swipe to delete operation
 * Easy addition,deletion of note
 * Easy editing
-* Recycler view to have better view
 * Storage based on priority number
 * Seamless database operations
 
