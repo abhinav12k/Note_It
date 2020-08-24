@@ -17,12 +17,11 @@ Note It! make it easier to store notes with its simplistic UI and the user is ab
 * Live Model  
 * Recyler View
 
-# Getting Started
-* In android studio goto file
-* Select new > Import from version control
-* Choose git / github (git option recommanded )
-* Paste url to repository i.e https://github.com/abhinav78910/Note_It.git
-* Click on clone.
+# Want to contribute?
+* Fork the repo
+* Make changes/improvement in the forked repo
+* Commit your changes
+* Create a pull request to be merged
 
 # PlayStore Link
 https://play.google.com/store/apps/details?id=com.abhi.noteIt
