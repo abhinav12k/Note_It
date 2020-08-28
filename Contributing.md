@@ -12,7 +12,7 @@ Please note we have a code of conduct, please follow it in all your interactions
 
 ## Raise an Issue
 
-This is an Open Source project and we would be happy to see contributors who report bugs and file feature requests submitting pull requests as well. This project adheres to the Contributor Covenant code of conduct. By participating, you are expected to uphold this code style. Please report issues here Issues
+This is an Open Source project and we would be happy to see contributors who report bugs and file feature requests submitting pull requests as well. This project adheres to the Contributor Covenant code of conduct. By participating, you are expected to uphold this code style. Please report issues here [Issues](https://github.com/abhinav78910/Note_It/issues)
 
 
 ## Pull Request Process
