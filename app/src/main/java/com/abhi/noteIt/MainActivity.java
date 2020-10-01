@@ -65,12 +65,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
-            @Override
-            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-                return false;
-            }
-
+        ItemTouchHelper itemTouchhelper = new ItemTouchHelper(new SwipeToDeleteCallback(this) {
             @Override
             public void onSwiped(@NonNull final RecyclerView.ViewHolder viewHolder, int direction) {
                 final int adapterPosition = viewHolder.getAdapterPosition();
@@ -88,9 +83,10 @@ public class MainActivity extends AppCompatActivity {
                         });
                 snackbar.show();
                 noteViewModel.delete(adapter.getNoteAt(viewHolder.getAdapterPosition()));
-//                Toast.makeText(getApplicationContext(), "Note Deleted!", Toast.LENGTH_SHORT).show();
             }
-        }).attachToRecyclerView(recyclerView);
+        });
+        itemTouchhelper.attachToRecyclerView(recyclerView);
+
 
 
         adapter.setOnItemClickListener(new NoteAdapter.onItemClickListener() {
