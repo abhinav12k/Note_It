@@ -52,7 +52,7 @@ abstract public class SwipeToDeleteCallback extends ItemTouchHelper.Callback {
 
     @Override
     public int getMovementFlags(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder) {
-        return makeMovementFlags(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
+        return makeMovementFlags(0, ItemTouchHelper.LEFT );
     }
 
     @Override
@@ -94,8 +94,8 @@ abstract public class SwipeToDeleteCallback extends ItemTouchHelper.Callback {
 
         deleteDrawable.setBounds(deleteIconLeft, deleteIconTop, deleteIconRight, deleteIconBottom);
         deleteDrawable.draw(c);
-        deleteDrawable2.setBounds(deleteIconLeft2, deleteIconTop, deleteIconRight2, deleteIconBottom);
-        deleteDrawable2.draw(c);
+//        deleteDrawable2.setBounds(deleteIconLeft2, deleteIconTop, deleteIconRight2, deleteIconBottom);
+//        deleteDrawable2.draw(c);
 
         super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
 
