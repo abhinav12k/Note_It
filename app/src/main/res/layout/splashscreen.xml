@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/splash_screen"
-        android:layout_width="431dp"
-        android:layout_height="861dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="#ED8968"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"

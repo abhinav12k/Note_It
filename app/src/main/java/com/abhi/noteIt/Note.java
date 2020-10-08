@@ -12,40 +12,71 @@ public class Note {
     private String description;
     private String priority;
     private int priorityNumber;
-    private String dateTime;
+    private String date;
+    private String time;
 
-    public Note(String title, String description, String priority,int priorityNumber,String dateTime) {
+    public Note(String title, String description, String priority, int priorityNumber, String date, String time) {
         this.title = title;
         this.description = description;
         this.priority = priority;
         this.priorityNumber = priorityNumber;
-        this.dateTime = dateTime;
+        this.date = date;
+        this.time = time;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
-    public int getPriorityNumber() {
-        return priorityNumber;
-    }
-
-    public String getDateTime(){
-        return dateTime;
-    }
-    public int getId() {
-        return id;
-    }
-
     public String getTitle() {
         return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {
         return description;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String getPriority() {
         return priority;
+    }
+
+    public void setPriority(String priority) {
+        this.priority = priority;
+    }
+
+    public int getPriorityNumber() {
+        return priorityNumber;
+    }
+
+    public void setPriorityNumber(int priorityNumber) {
+        this.priorityNumber = priorityNumber;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

@@ -1,6 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/primaryColor</item>
@@ -9,6 +9,7 @@
         <item name="colorControlNormal">#c5c5c5</item>
         <item name="colorControlActivated">@color/primaryLightColor</item>
         <item name="colorControlHighlight">@color/primaryLightColor</item>
+        <item name="android:forceDarkAllowed">false</item>
     </style>
 
     <style name="MyHintStyle" parent="@android:style/TextAppearance">
