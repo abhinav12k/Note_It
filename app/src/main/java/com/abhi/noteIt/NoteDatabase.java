@@ -9,19 +9,20 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-@Database(entities = {Note.class},version = 3)
+@Database(entities = {Note.class}, version = 3)
 public abstract class NoteDatabase extends RoomDatabase {
 
     private static NoteDatabase instance;
+
     public abstract NoteDoa noteDoa();
 
-    public static synchronized NoteDatabase getInstance(Context context){
-        if(instance==null){
+    public static synchronized NoteDatabase getInstance(Context context) {
+        if (instance == null) {
             instance = Room.databaseBuilder(context.getApplicationContext()
-            ,NoteDatabase.class,"notes_database")
+                    , NoteDatabase.class, "notes_database")
                     .fallbackToDestructiveMigration()
                     .addCallback(roomCallback)
                     .build();
@@ -47,16 +48,22 @@ public abstract class NoteDatabase extends RoomDatabase {
         @Override
         protected Void doInBackground(Void... voids) {
 
-            Calendar calendar = Calendar.getInstance();
-            String currentDate  = DateFormat.getDateInstance(DateFormat.MEDIUM).format(calendar.getTime());
+            //Calendar calendar = Calendar.getInstance();
+            //String currentDate  = DateFormat.getDateInstance(DateFormat.MEDIUM).format(calendar.getTime());
 
 //            SimpleDateFormat sdf = new SimpleDateFormat("hh:mm a");
 //            String result = currentDate+", "+sdf.format(Calendar.getInstance().getTime());
 //            System.out.println(result);
 
-            noteDao.insert(new Note("Title 1", "Description 1", "High",3,currentDate));
-            noteDao.insert(new Note("Title 2", "Description 2", "Medium",2,currentDate));
-            noteDao.insert(new Note("Title 3", "Description 3", "Low",1,currentDate));
+            Calendar calendar = Calendar.getInstance();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy");
+            SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm a");
+            String date = dateFormat.format(calendar.getTime());
+            String ntime = timeFormat.format(calendar.getTime());
+            String time = ntime.replace("am", "AM").replace("pm", "PM");
+            noteDao.insert(new Note("Title 1", "Description 1", "High", 3, date, time));
+            noteDao.insert(new Note("Title 2", "Description 2", "Medium", 2, date, time));
+            noteDao.insert(new Note("Title 3", "Description 3", "Low", 1, date, time));
             return null;
         }
     }
