@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Note It!</string>
+    <string name="description">Description</string>
+    <string name="title">Title</string>
+    <string name="hint_text">Priority</string>
     <string-array name="priorityList">
         <item>High</item>
         <item>Medium</item>
