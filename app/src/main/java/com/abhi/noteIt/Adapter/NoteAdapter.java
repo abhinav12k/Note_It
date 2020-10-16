@@ -1,11 +1,9 @@
-package com.abhi.noteIt;
+package com.abhi.noteIt.Adapter;
 
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,13 +11,11 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.abhi.noteIt.Model.Note;
 import com.android.noteIt.R;
 import com.google.android.material.card.MaterialCardView;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder>  {
+public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
 
     private onItemClickListener listener;
 
@@ -53,13 +49,13 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder>  {
         holder.textViewTitle.setText(currentNode.getTitle());
         holder.textViewDescription.setText(currentNode.getDescription());
         holder.textViewPriority.setText(String.valueOf(currentNode.getPriority()));
-        holder.textViewDateTime.setText(currentNode.getDateTime());
+        holder.textViewDateTime.setText(currentNode.getDate());
 
-        if(currentNode.getPriority().equals("High")){
+        if (currentNode.getPriority().equals("High")) {
             holder.cardView.setCardBackgroundColor(Color.parseColor("#FF5722"));
-        }else if(currentNode.getPriority().equals("Medium")){
+        } else if (currentNode.getPriority().equals("Medium")) {
             holder.cardView.setCardBackgroundColor(Color.parseColor("#FFC107"));
-        }else if(currentNode.getPriority().equals("Low")){
+        } else if (currentNode.getPriority().equals("Low")) {
             holder.cardView.setCardBackgroundColor(Color.parseColor("#4CAF50"));
         }
 

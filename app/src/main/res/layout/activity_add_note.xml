@@ -4,25 +4,102 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="12dp"
-    android:background="#FFFFFF"
+    android:background="@color/modeColor"
     android:orientation="vertical"
-    android:padding="8dp"
-    tools:context="com.abhi.noteIt.AddEditNoteActivity">
+    android:paddingStart="10dp"
+    android:paddingTop="2dp"
+    android:paddingEnd="10dp"
+    android:paddingBottom="20dp"
+    tools:context="com.abhi.noteIt.Home.AddEditNoteActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        android:background="@drawable/datetime_background"
+        android:elevation="3dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="6dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/bold"
+                android:padding="2dp"
+                android:text="06-10-2001"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/normal"
+                android:padding="2dp"
+                android:text="02:99 AM"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="15sp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center|end"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:fontFamily="@font/normal"
+                android:text="Priority :"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="15sp" />
+
+            <Spinner
+                android:id="@+id/spinnerPriority"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/style_spinner"
+                android:entries="@array/priorityList"
+                android:popupBackground="@color/modeColor" />
+
+        </LinearLayout>
+    </LinearLayout>
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/outlinedTextFieldTitle"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/title"
-        app:errorEnabled="true">
+        android:layout_margin="6dp"
+        android:hint="Title"
+        android:textColorHint="#c1c2c4"
+        app:errorEnabled="true"
+        app:hintTextAppearance="@style/MyHintStyle">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:inputType="text"
+            android:textColor="@color/primaryTextColor"
             android:textSize="20sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -30,71 +107,24 @@
         android:id="@+id/outlinedTextFieldDescription"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/description"
+        android:layout_height="match_parent"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="6dp"
+        android:hint="Description"
+        android:textColorHint="#c1c2c4"
         app:errorEnabled="true"
-        app:hintAnimationEnabled="true">
+        app:hintAnimationEnabled="true"
+        app:hintTextAppearance="@style/MyHintStyle">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_Description"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="match_parent"
             android:gravity="start"
             android:inputType="textMultiLine"
+            android:textColor="@color/primaryTextColor"
             android:textSize="20sp" />
     </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/hint_text"
-        android:layout_marginTop="16dp">
-
-        <AutoCompleteTextView
-            android:id="@+id/priorityMenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/hint_text"
-            android:inputType="none"/>
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--        android:layout_width="373dp"-->
-<!--        android:layout_height="69dp">-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/textView"-->
-<!--            android:layout_width="82dp"-->
-<!--            android:layout_height="40dp"-->
-<!--            android:layout_marginTop="8dp"-->
-<!--            android:text="Priority :"-->
-<!--            android:textAppearance="@style/TextAppearance.AppCompat.Medium"-->
-<!--            android:textSize="20sp"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintHorizontal_bias="0.054"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:layout_constraintVertical_bias="0.38" />-->
-
-<!--        <Spinner-->
-<!--            android:id="@+id/spinnerPriority"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="51dp"-->
-<!--            android:layout_marginStart="80dp"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:layout_marginBottom="10dp"-->
-<!--            android:entries="@array/priorityList"-->
-<!--            android:scrollbarSize="20sp"-->
-<!--            android:spinnerMode="dialog"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintHorizontal_bias="1.0"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/textView"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 </LinearLayout>

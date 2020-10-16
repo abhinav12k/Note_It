@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.abhi.noteIt.splashscreen"
+        <activity android:name="com.abhi.noteIt.Home.splashscreen"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,9 +17,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.abhi.noteIt.MainActivity" />
-        <activity android:name="com.abhi.noteIt.AddEditNoteActivity"
-            android:parentActivityName="com.abhi.noteIt.MainActivity"/>
+        <activity android:name="com.abhi.noteIt.Home.MainActivity" />
+        <activity android:name="com.abhi.noteIt.Home.AddEditNoteActivity"
+            android:parentActivityName="com.abhi.noteIt.Home.MainActivity"/>
     </application>
 
 </manifest>

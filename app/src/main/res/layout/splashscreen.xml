@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/splash_screen"
-        android:layout_width="431dp"
-        android:layout_height="861dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="#ED8968"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,16 +23,13 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="215dp"
         android:layout_height="23dp"
-        android:layout_marginTop="592dp"
-        android:layout_marginBottom="200dp"
+        android:layout_marginBottom="250dp"
         android:background="#E7658F"
         android:indeterminate="true"
-        android:progressTint="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/splash_screen"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toEndOf="@+id/splash_screen"
-        app:layout_constraintTop_toTopOf="@+id/splash_screen"
-        app:layout_constraintVertical_bias="0.0" />
+        android:progressTint="#F6F6F6"
+        app:layout_constraintBottom_toBottomOf="@+id/splash_screen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,5 @@
 
-package com.abhi.noteIt;
+package com.abhi.noteIt.Utilities;
 
 
 import android.content.Context;
@@ -33,7 +33,7 @@ abstract public class SwipeToDeleteCallback extends ItemTouchHelper.Callback {
     private int intrinsicHeight2;
 
 
-    SwipeToDeleteCallback(Context context) {
+    public SwipeToDeleteCallback(Context context) {
         mContext = context;
         mBackground = new ColorDrawable();
         backgroundColor = Color.parseColor("#b80f0a");

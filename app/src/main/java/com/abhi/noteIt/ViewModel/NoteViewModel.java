@@ -1,10 +1,13 @@
-package com.abhi.noteIt;
+package com.abhi.noteIt.ViewModel;
 
 import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+
+import com.abhi.noteIt.Repository.NoteRepository;
+import com.abhi.noteIt.Model.Note;
 
 import java.util.List;
 

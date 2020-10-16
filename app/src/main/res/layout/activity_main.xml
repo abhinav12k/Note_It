@@ -2,23 +2,27 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/myCoordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.abhi.noteIt.MainActivity"
-    android:padding="5dp">
+    android:background="@color/modeColor"
+    tools:context="com.abhi.noteIt.Home.MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/modeColor"
         tools:listitem="@layout/note_item" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/button_add_note"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_add"
         android:layout_gravity="end|bottom"
-        android:layout_margin="32dp"></com.google.android.material.floatingactionbutton.FloatingActionButton>
-
+        android:layout_margin="32dp"
+        app:backgroundTint="@color/primaryColor"
+        app:borderWidth="0dp"
+        app:srcCompat="@drawable/ic_add"
+        app:tint="@color/modeColor" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
