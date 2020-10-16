@@ -9,10 +9,10 @@
                     <padding android:right="10dp" />
                 </shape>
             </item>
-            <item>
-                <bitmap android:gravity="center|end" android:src="@drawable/ic_down"
-                    android:tint="@color/primaryTextColor"/>
-            </item>
+<!--            <item>-->
+<!--                <bitmap android:gravity="center|end" android:src="@drawable/ic_down"-->
+<!--                    android:tint="@color/primaryTextColor"/>-->
+<!--            </item>-->
         </layer-list>
     </item>
 </selector>

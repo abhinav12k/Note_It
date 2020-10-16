@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.SearchView;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         adapter = new NoteAdapter();
         recyclerView.setAdapter(adapter);
 
-        noteViewModel = ViewModelProviders.of(this).get(NoteViewModel.class);
+        noteViewModel = new ViewModelProvider(this).get(NoteViewModel.class);
         noteViewModel.getAllNotes().observe(this, new Observer<List<Note>>() {
             @Override
             public void onChanged(@Nullable List<Note> notes) {

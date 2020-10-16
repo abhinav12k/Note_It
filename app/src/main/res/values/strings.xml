@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">Note It!</string>
+    <string name="description">Description</string>
+    <string name="title">Title</string>
+    <string name="hint_text">Priority</string>
+    <string name="demo_time">02:99 AM</string>
+    <string name="demo_date">06-10-2001</string>
     <string-array name="priorityList">
         <item>High</item>
         <item>Medium</item>

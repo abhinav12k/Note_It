@@ -2,10 +2,13 @@ package com.abhi.noteIt;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,7 +35,9 @@ public class AddEditNoteActivity extends AppCompatActivity {
     private TextView tvDate, tvTime;
     private TextInputEditText editTextTitle;
     private TextInputEditText editTextDescription;
-    private Spinner spinnerPriority;
+//    private Spinner spinnerPriority;
+    private AutoCompleteTextView priorityMenu;
+    private String priority;
     //private String currentDate;
 
     @Override
@@ -50,7 +55,8 @@ public class AddEditNoteActivity extends AppCompatActivity {
 
         editTextTitle = findViewById(R.id.edit_text_title);
         editTextDescription = findViewById(R.id.edit_text_Description);
-        spinnerPriority = findViewById(R.id.spinnerPriority);
+//        spinnerPriority = findViewById(R.id.spinnerPriority);
+        priorityMenu = findViewById(R.id.priorityMenu);
         tvDate = findViewById(R.id.tv_date);
         tvTime = findViewById(R.id.tv_time);
 
@@ -64,27 +70,54 @@ public class AddEditNoteActivity extends AppCompatActivity {
             tvDate.setText(intent.getStringExtra(EXTRA_DATE));
             tvTime.setText(intent.getStringExtra(EXTRA_TIME));
             //ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.priorityList,R.layout.style_spinner);
-            String[] array = {"High", "Medium", "Low"};
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.style_spinner, array);
-            spinnerPriority.setAdapter(adapter);
+//            String[] array = {"High", "Medium", "Low"};
+//            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.style_spinner, array);
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                    this,
+                    R.array.priorityList,
+                    R.layout.dropdown_popup_menu_item);
+            priorityMenu.setAdapter(adapter);
+//            spinnerPriority.setAdapter(adapter);
             //spinnerPriority.setSelection(intent.getIntExtra(EXTRA_PRIORITY_NUMBER,1));
         } else {
             setTitle("Add Note");
             tvDate.setText(date);
             tvTime.setText(time);
             //ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.priorityList,R.layout.style_spinner);
-            String[] array = {"High", "Medium", "Low"};
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.style_spinner, array);
-            spinnerPriority.setAdapter(adapter);
+//            String[] array = {"High", "Medium", "Low"};
+//            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.style_spinner, array);
+//            spinnerPriority.setAdapter(adapter);
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                    this,
+                    R.array.priorityList,
+                    R.layout.dropdown_popup_menu_item);
+            priorityMenu.setAdapter(adapter);
             //spinnerPriority.setSelection(intent.getIntExtra(EXTRA_PRIORITY_NUMBER,1));
         }
+
+        priorityMenu.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                priority = charSequence.toString();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
     }
 
     private void saveNote() {
 
         String title = editTextTitle.getText().toString();
         String description = editTextDescription.getText().toString();
-        String priority = spinnerPriority.getSelectedItem().toString();
         String date = tvDate.getText().toString();
         String time = tvTime.getText().toString();
         if (title.trim().isEmpty() || description.trim().isEmpty()) {
@@ -96,21 +129,27 @@ public class AddEditNoteActivity extends AppCompatActivity {
         data.putExtra(EXTRA_TITLE, title);
         data.putExtra(EXTRA_DESCRIPTION, description);
         data.putExtra(EXTRA_PRIORITY, priority);
-        data.putExtra(EXTRA_PRIORITY_NUMBER, spinnerPriority.getSelectedItem().toString());
         data.putExtra(EXTRA_DATE, date);
         data.putExtra(EXTRA_TIME, time);
 
-        int priorityNumber = 0;
+        int  priorityNumber=0;
 
-        if (priority.equals("High")) {
-            priorityNumber = 3;
-        } else if (priority.equals("Medium")) {
-            priorityNumber = 2;
-        } else if (priority.equals("Low")) {
-            priorityNumber = 1;
+        switch (priority) {
+            case "High":
+                priorityNumber = 3;
+                break;
+            case "Medium":
+                priorityNumber = 2;
+                break;
+            case "Low":
+                priorityNumber = 1;
+                break;
+            default:
+                priorityNumber = 1;
+                break;
         }
 
-        data.putExtra(EXTRA_PRIORITY_NUMBER, priorityNumber);
+        data.putExtra(EXTRA_PRIORITY_NUMBER,priorityNumber);
 
         int id = getIntent().getIntExtra(EXTRA_ID, -1);
         if (id != -1) {
