@@ -1,5 +1,6 @@
 package com.abhi.noteIt;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,12 +9,15 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.appcompat.widget.SearchView;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -22,6 +26,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.noteIt.R;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -39,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     boolean isDarkModeOn;
+    MaterialAlertDialogBuilder builder;
 
 
     @Override
@@ -46,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FloatingActionButton buttonAddNote = findViewById(R.id.button_add_note);
+        final FloatingActionButton buttonAddNote = findViewById(R.id.button_add_note);
         buttonAddNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
         adapter = new NoteAdapter();
         recyclerView.setAdapter(adapter);
 
+        builder = new MaterialAlertDialogBuilder(
+                new ContextThemeWrapper(this, R.style.AlertDialogCustom));
         noteViewModel = ViewModelProviders.of(this).get(NoteViewModel.class);
         noteViewModel.getAllNotes().observe(this, new Observer<List<Note>>() {
             @Override
@@ -75,20 +83,47 @@ public class MainActivity extends AppCompatActivity {
         new ItemTouchHelper(new SwipeToDeleteCallback(this) {
             @Override
             public void onSwiped(@NonNull final RecyclerView.ViewHolder viewHolder, int direction) {
+                builder.setBackground(getResources().getDrawable(R.drawable.alert_shape));
+                builder.setMessage("Do you want to delete this note ?")
+                        .setTitle("Alert")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                final int adapterPosition = viewHolder.getAdapterPosition();
+                                final Note mNote = adapter.getNoteAt(adapterPosition);
+                                final View viewPos = findViewById(R.id.myCoordinatorLayout);
 
-                final int adapterPosition = viewHolder.getAdapterPosition();
-                final Note mNote = adapter.getNoteAt(adapterPosition);
-                Snackbar snackbar = Snackbar
-                        .make(recyclerView, "Note Deleted", Snackbar.LENGTH_LONG)
-                        .setAction("UNDO", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                int mAdapterPosition = viewHolder.getAdapterPosition();
-                                noteViewModel.insert(mNote);
+                                Snackbar snackbar = Snackbar
+                                        .make(recyclerView, "Note Deleted", Snackbar.LENGTH_LONG)
+                                        .setAction("UNDO", new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                int mAdapterPosition = viewHolder.getAdapterPosition();
+                                                noteViewModel.insert(mNote);
+                                            }
+                                        });
+
+                                snackbar.setActionTextColor(getResources().getColor(R.color.primaryLightColor));
+                                View snackBarView = snackbar.getView();
+                                int snackbarTextId = com.google.android.material.R.id.snackbar_text;
+                                TextView textView = snackBarView.findViewById(snackbarTextId);
+                                textView.setTextColor(getResources().getColor(R.color.primaryTextColor));
+                                snackBarView.setBackground(getResources().getDrawable(R.drawable.snackbar_shape));
+                                snackbar.show();
+
+                                noteViewModel.delete(adapter.getNoteAt(viewHolder.getAdapterPosition()));
+                                dialog.cancel();
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                adapter.notifyDataSetChanged();
+                                dialog.cancel();
                             }
                         });
-                snackbar.show();
-                noteViewModel.delete(adapter.getNoteAt(viewHolder.getAdapterPosition()));
+                AlertDialog alert = builder.create();
+                alert.show();
+
             }
         }).attachToRecyclerView(recyclerView);
 
