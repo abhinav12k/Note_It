@@ -6,5 +6,6 @@
     <color name="primaryTextColor">#000000</color>
     <color name="modeColor">#ffffff</color>
     <color name="backColor">#ffffff</color>
+    <color name="dialogueBtn">#f9a825</color>
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#c1c2c4</color>
 </resources>
