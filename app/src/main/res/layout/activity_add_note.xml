@@ -10,7 +10,7 @@
     android:paddingTop="2dp"
     android:paddingEnd="10dp"
     android:paddingBottom="20dp"
-    tools:context="com.abhi.noteIt.AddEditNoteActivity">
+    tools:context="com.abhi.noteIt.Home.AddEditNoteActivity">
 
 
     <LinearLayout
