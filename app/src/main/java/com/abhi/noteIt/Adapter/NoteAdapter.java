@@ -1,4 +1,4 @@
-package com.abhi.noteIt;
+package com.abhi.noteIt.Adapter;
 
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.abhi.noteIt.Model.Note;
 import com.android.noteIt.R;
 import com.google.android.material.card.MaterialCardView;
 

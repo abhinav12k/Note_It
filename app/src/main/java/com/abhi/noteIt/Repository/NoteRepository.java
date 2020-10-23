@@ -1,13 +1,14 @@
-package com.abhi.noteIt;
+package com.abhi.noteIt.Repository;
 
 import android.app.Application;
 import android.os.AsyncTask;
-import android.widget.Filter;
-import android.widget.Filterable;
 
 import androidx.lifecycle.LiveData;
 
-import java.util.ArrayList;
+import com.abhi.noteIt.Database.NoteDatabase;
+import com.abhi.noteIt.Database.NoteDoa;
+import com.abhi.noteIt.Model.Note;
+
 import java.util.List;
 
 public class NoteRepository  {
