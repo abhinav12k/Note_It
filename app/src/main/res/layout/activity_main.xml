@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/modeColor"
-    tools:context="com.abhi.noteIt.MainActivity">
+    tools:context="com.abhi.noteIt.Home.MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"

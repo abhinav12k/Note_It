@@ -1,4 +1,4 @@
-package com.abhi.noteIt;
+package com.abhi.noteIt.Home;
 
 import android.content.Intent;
 import android.os.Bundle;

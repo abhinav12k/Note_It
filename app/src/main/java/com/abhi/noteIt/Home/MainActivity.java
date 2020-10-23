@@ -1,4 +1,4 @@
-package com.abhi.noteIt;
+package com.abhi.noteIt.Home;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -25,6 +25,10 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.abhi.noteIt.Adapter.NoteAdapter;
+import com.abhi.noteIt.ViewModel.NoteViewModel;
+import com.abhi.noteIt.Utilities.SwipeToDeleteCallback;
+import com.abhi.noteIt.Model.Note;
 import com.android.noteIt.R;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;

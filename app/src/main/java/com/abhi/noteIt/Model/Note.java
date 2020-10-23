@@ -1,4 +1,4 @@
-package com.abhi.noteIt;
+package com.abhi.noteIt.Model;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
