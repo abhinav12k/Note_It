@@ -17,7 +17,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.abhi.noteIt.Home.MainActivity" />
+        <activity android:name="com.abhi.noteIt.Home.MainActivity"
+            android:launchMode="singleInstance"/>
         <activity android:name="com.abhi.noteIt.Home.AddEditNoteActivity"
             android:parentActivityName="com.abhi.noteIt.Home.MainActivity"/>
     </application>
