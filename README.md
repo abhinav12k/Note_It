@@ -14,17 +14,14 @@ Note It! make it easier to store notes with its simplistic UI and the user is ab
 # Build With
 * Room
 * ViewModel
-* Live Model  
-* Recycler View
+* LiveData  
+* Dark Mode
 
 # Want to contribute?
 * See the [Contributor's Guide](https://github.com/abhinav78910/Note_It/blob/master/Contributing.md)
 
 # Note-
 Right Now development is being done on the feature branch so contributors kindly make changes in feature branch and make pull request for the feature branch only.
-
-# Get in Touch
-You can contact me on [Telegram](https://t.me/joinchat/KjgkxBpGfK-zgPsgBG4Mlg)
 
 # PlayStore Link
 https://play.google.com/store/apps/details?id=com.abhi.noteIt
