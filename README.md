@@ -20,9 +20,6 @@ Note It! make it easier to store notes with its simplistic UI and the user is ab
 # Want to contribute?
 * See the [Contributor's Guide](https://github.com/abhinav78910/Note_It/blob/master/Contributing.md)
 
-# Note-
-Right Now development is being done on the feature branch so contributors kindly make changes in feature branch and make pull request for the feature branch only.
-
 # PlayStore Link
 https://play.google.com/store/apps/details?id=com.abhi.noteIt
 
